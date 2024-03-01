@@ -14,3 +14,11 @@ class DataTransformationConfig:
     tokenizer_name: str
     dataset_dir: Path
     save_to_dir: Path
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    model_name: str
+    dataset_dir: Path
+    model_save_to_dir: Path
+    tokenizer_save_to_dir: Path

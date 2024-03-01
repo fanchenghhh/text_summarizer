@@ -1,5 +1,8 @@
 import os
 
+from textSummarizer.pipeline.stage_03_model_trainer import \
+    ModelTrainerTrainingPipeline
+
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 from textSummarizer.logging import logger
@@ -25,6 +28,18 @@ if __name__ == "__main__":
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
         data_transformation = DataTransformationTrainingPipeline()
         data_transformation.main()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+    except Exception as e:
+        logger.exception(e)
+        raise e
+
+
+
+    STAGE_NAME = "Model Trainer stage"
+    try:
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+        data_transformation = ModelTrainerTrainingPipeline()
+        data_transformation.train()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)

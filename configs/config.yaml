@@ -9,3 +9,9 @@ data_transformation:
     tokenizer_name: google/pegasus-cnn_dailymail
     dataset_dir: artifacts/data_ingestion/samsum_dataset
     save_to_dir: artifacts/data_transformation/samsum_dataset
+
+model_trainer:
+    model_name: google/pegasus-cnn_dailymail 
+    dataset_dir: artifacts/data_transformation/samsum_dataset
+    model_save_to_dir: artifacts/model_trainer/model
+    tokenizer_save_to_dir: artifacts/model_trainer/tokenizer

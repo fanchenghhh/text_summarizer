@@ -1,7 +1,9 @@
 from pathlib import Path
 
 from textSummarizer.constants import CONFIG_FILE, PARAM_FILE
-from textSummarizer.entity import DataIngestionConfig, DataTransformationConfig
+from textSummarizer.entity import (DataIngestionConfig,
+                                   DataTransformationConfig,
+                                   ModelTrainerConfig)
 from textSummarizer.utils import read_yaml
 
 
@@ -28,3 +30,16 @@ class ConfigManager:
             tokenizer_name=config.tokenizer_name,
             save_to_dir=Path(config.save_to_dir)
             )
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        return ModelTrainerConfig(
+            model_name=config.model_name,
+            dataset_dir=config.dataset_dir,
+            model_save_to_dir=config.model_save_to_dir,
+            tokenizer_save_to_dir=config.tokenizer_save_to_dir
+            )
+    
+    def get_param(self):
+        return self.param
